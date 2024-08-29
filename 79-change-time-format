@@ -1,0 +1,38 @@
+public String changeTimeFormat(String strTime) {
+    //code here
+    list<String> ls = strTime.splitByCharacterTypeCamelCase();
+
+    String t1 = ls.get(0);
+    String minutes = ls.get(2);
+
+    Integer h = Integer.valueOf(t1);
+    Integer ho;
+
+    if(h==00 || (h>=13 && h<=23)){
+        if(h==00){
+            ho = h + 12;
+            String hours = String.valueOf(ho);
+    	    return hours+':'+minutes+' AM';
+        }
+
+        else if(h>=13 && h<=21){
+            ho = h - 12;
+            String hours = String.valueOf(ho);
+    	    return '0'+hours+':'+minutes+' PM';
+        }
+
+        else{
+            ho = h - 12;
+            String hours = String.valueOf(ho);
+            return hours+':'+minutes+' PM';
+        }
+    }
+
+    else if(t1 =='12'){
+        return t1+':'+minutes+' PM';
+    }
+
+    else{
+        return t1 + ':' + minutes + ' AM';
+    }
+}
